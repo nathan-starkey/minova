@@ -4,23 +4,10 @@ let current;
 let game = new Game();
 
 
-function load() {
-  resizeCanvas();
-  
+window.addEventListener("load", function () {
   current = performance.now() / 1000;
   requestAnimationFrame(loop);
-}
-
-
-function resize() {
-  resizeCanvas();
-}
-
-
-function resizeCanvas() {
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
-}
+});
 
 
 function loop() {
@@ -31,10 +18,6 @@ function loop() {
   let event;
   
   while (event = events.shift()) {
-    for (let object of game.objects) {
-      object.input(event);
-    }
-    
     game.input(event);
   }
   

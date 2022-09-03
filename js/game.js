@@ -8,7 +8,16 @@ class Game {
   }
   
   input(event) {
+    switch (event.type) {
+    case "load":
+    case "resize":
+      this.canvas.width = innerWidth;
+      this.canvas.height = innerHeight;
+    }
     
+    for (let object of this.objects) {
+      object.input(event);
+    }
   }
   
   update(step) {

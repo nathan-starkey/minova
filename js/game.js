@@ -1,21 +1,29 @@
-let context = canvas.getContext("2d");
-
-
-function input(event) {
-  switch (event.type) {
-  case "keydown":
-    break;
-  case "keyup":
+class Game {
+  constructor() {
+    this.canvas = document.getElementById("canvas");
+    this.context = canvas.getContext("2d");
+    this.objects = [];
+    
+    this.objects.push(new Player());
   }
-}
-
-
-function update(step) {
   
-}
-
-
-function draw(delta) {
-  context.reset();
-  context.fillRect(0, 0, 100, 100);
+  input(event) {
+    
+  }
+  
+  update(step) {
+    for (let object of this.objects) {
+      object.update(step);
+    }
+  }
+  
+  draw(delta) {
+    let context = this.context;
+    
+    context.reset();
+    
+    for (let object of this.objects) {
+      object.draw(delta, context);
+    }
+  }
 }

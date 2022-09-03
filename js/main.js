@@ -1,6 +1,7 @@
 let timestep = 1/60;
 let drift = 0;
 let current;
+let game = new Game();
 
 
 function load() {
@@ -27,16 +28,22 @@ function loop() {
   current = performance.now() / 1000;
   drift += current - previous;
   
-  while (events[0]) {
-    input(events.shift());
+  let event;
+  
+  while (event = events.shift()) {
+    for (let object of game.objects) {
+      object.input(event);
+    }
+    
+    game.input(event);
   }
   
   while (drift >= timestep) {
-    update(timestep);
+    game.update(timestep);
     drift -= timestep;
   }
   
-  draw(drift / timestep);
+  game.draw(drift / timestep);
   
   requestAnimationFrame(loop);
 }

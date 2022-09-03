@@ -3,13 +3,12 @@ class Game {
     this.canvas = document.getElementById("canvas");
     this.context = canvas.getContext("2d");
     this.objects = [];
-    
-    this.objects.push(new Player());
   }
   
   input(event) {
     switch (event.type) {
     case "load":
+      this.objects.push(new Player());
     case "resize":
       this.canvas.width = innerWidth;
       this.canvas.height = innerHeight;

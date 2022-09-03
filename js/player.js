@@ -8,7 +8,7 @@ class Player {
     if (event.type == "keydown") {
       if (event.key == "d") {
         this.x += 10;
-      } else if (event.key == "d") {
+      } else if (event.key == "a") {
         this.x -= 10;
       } else if (event.key == "s") {
         this.y += 10;

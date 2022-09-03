@@ -2,12 +2,19 @@ let timestep = 1/60;
 let drift = 0;
 let current;
 let game = new Game();
+let events = [];
 
 
-window.addEventListener("load", function () {
+window.addEventListener("keydown", onEvent);
+window.addEventListener("keyup", onEvent);
+window.addEventListener("load", onEvent);
+window.addEventListener("resize", onEvent);
+
+
+function load() {
   current = performance.now() / 1000;
   requestAnimationFrame(loop);
-});
+}
 
 
 function loop() {
@@ -29,4 +36,9 @@ function loop() {
   game.draw(drift / timestep);
   
   requestAnimationFrame(loop);
+}
+
+
+function onEvent(event) {
+  events.push(event);
 }

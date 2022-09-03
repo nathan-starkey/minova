@@ -1,4 +1,3 @@
-let context = canvas.getContext("2d");
 let timestep = 1/60;
 let drift = 0;
 let current;
@@ -40,24 +39,4 @@ function loop() {
   draw(drift / timestep);
   
   requestAnimationFrame(loop);
-}
-
-
-function input(event) {
-  switch (event.type) {
-  case "keydown":
-    break;
-  case "keyup":
-  }
-}
-
-
-function update(step) {
-  
-}
-
-
-function draw(delta) {
-  context.reset();
-  context.fillRect(0, 0, 100, 100);
 }
